@@ -110,6 +110,29 @@ app.get('/api/blackboxAIChat', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+app.get('/api/tiktok', async (req, res) => {
+  const url = req.query.url;
+  if (!url) return res.status(400).json({ status: false, message: 'Masukkan parameter url' });
+
+  try {
+    const response = await axios.get(`https://api.tiklydown.me/api/download?url=${encodeURIComponent(url)}`);
+    if (response.data && response.data.video) {
+      res.json({
+        status: true,
+        author: response.data.author,
+        description: response.data.description,
+        video_no_watermark: response.data.video.noWatermark,
+        video_watermark: response.data.video.watermark,
+        thumbnail: response.data.thumbnail,
+        audio: response.data.music
+      });
+    } else {
+      res.status(500).json({ status: false, message: 'Gagal ambil data dari TiklyDown' });
+    }
+  } catch (err) {
+    res.status(500).json({ status: false, message: 'Error: ' + err.message });
+  }
+});
 
 app.get("/api/gpt", async (req, res) => {
 const text = req.query.text;
