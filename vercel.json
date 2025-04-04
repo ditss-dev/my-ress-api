@@ -6,7 +6,8 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
-    { "source": "/api/tiktok", "destination": "/index.js" }
+  "routes": [
+    { "src": "/api/tiktok", "dest": "index.js" },
+    { "src": "/", "dest": "index.js" }
   ]
 }
