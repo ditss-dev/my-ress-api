@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,8 +15,8 @@
     "axios": "^1.6.8",
     "cors": "^2.8.5",
     "cheerio": "^1.0.0-rc.12",
-    "node-fetch": "^2.6.7",
     "express": "^4.19.2",
+    "node-fetch": "^2.6.7",
     "ssl-express-www": "^3.2.1"
   }
 }
